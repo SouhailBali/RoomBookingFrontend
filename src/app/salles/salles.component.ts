@@ -82,4 +82,9 @@ console.log(err);
    let url=s._links.self.href;
 this.router.navigateByUrl("/edit-salle/"+btoa(url) );
   }
+
+  onReserveSalle(s: any) {
+    let url=s._links.self.href;
+    this.router.navigateByUrl("/reservations/"+btoa(url));
+  }
 }

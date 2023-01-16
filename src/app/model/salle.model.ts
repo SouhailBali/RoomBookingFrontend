@@ -3,7 +3,6 @@ export class Salle{
 public designation: string="";
   public  nom: string="";
   public capacite:number=0;
-
   constructor(id: number, designation: string, nom: string, capacite: number) {
     this.id = id;
     this.designation = designation;

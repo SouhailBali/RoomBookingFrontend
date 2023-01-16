@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Liste des reservations:</div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+        <div class="form-group">
+          <label>ID :</label><input type="number" name="keyword" ngModel placeholder="par ID">
+          <button style="margin-left: 15px" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span>
+            Chercher
+          </button>
+          <button style="margin-left: 25px" class="btn btn-toolbar" type="button" (click)="onGetReservations()"><span class="glyphicon glyphicon-arrow-down"></span>
+            All
+          </button>
+        </div>
+      </form>
+      <table *ngIf="reservation" class="table table-striped">
+        <tr>
+          <th>ID</th>
+          <th>date de debut</th>
+          <th>date de fin</th>
+          <th>Id Salle réservée</th>
+        </tr>
+        <tr *ngFor="let r of reservation">
+          <td>{{r.id}}</td>
+          <td>{{r.beginRes}}</td>
+          <td>{{r.endRes}}</td>
+          <td>{{r.salle.id}}</td>
+          <td><a class="btn btn-danger" (click)="onDeleteReservation(r)"><span class="glyphicon glyphicon-remove"></span> Supprimer</a></td>
+          <td><a class="btn btn-success" (click)="onEditReservation(r)"><span class="glyphicon glyphicon-edit"></span> Modiffier</a></td>
+        </tr>
+      </table>
+      <ul  *ngIf="page" class="nav nav-pills">
+        <li class="clickable" [ngClass]="i==currentPage?'active':''" *ngFor="let p of page;let i=index">
+          <a (click)="onPageReservation(i)">{{i}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

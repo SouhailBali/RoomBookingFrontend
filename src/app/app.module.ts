@@ -8,13 +8,15 @@ import { NouvelleSalleComponent } from './nouvelle-salle/nouvelle-salle.componen
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { EditSalleComponent } from './edit-salle/edit-salle.component';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SallesComponent,
     NouvelleSalleComponent,
-    EditSalleComponent
+    EditSalleComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,

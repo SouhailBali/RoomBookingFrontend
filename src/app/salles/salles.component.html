@@ -22,8 +22,9 @@
           <td>{{s.nom}}</td>
           <td>{{s.designation}}</td>
           <td>{{s.capacite}}</td>
-          <td><a class="btn btn-danger" (click)="onDeleteSalle(s)"><span class="glyphicon glyphicon-remove"></span>Supprimer</a></td>
+          <td><a class="btn btn-danger" (click)="onDeleteSalle(s)"><span class="glyphicon glyphicon-remove"></span> Supprimer</a></td>
           <td><a class="btn btn-success" (click)="onEditSalle(s)"><span class="glyphicon glyphicon-edit"></span> Modiffier</a></td>
+          <td><a class="btn btn-primary" (click)="onReserveSalle(s)"><span class="glyphicon glyphicon-ok"> Reserver</span></a></td>
         </tr>
       </table>
       <ul  *ngIf="pages" class="nav nav-pills">
