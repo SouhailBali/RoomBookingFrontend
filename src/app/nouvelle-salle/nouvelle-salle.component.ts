@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RoomBookingService} from "../services/room-booking.service";
 import {Router} from "@angular/router";
 import {Salle} from "../model/salle.model";
+import {Reservation} from "../model/reservation.model";
 
 @Component({
   selector: 'app-nouvelle-salle',

@@ -85,6 +85,6 @@ this.router.navigateByUrl("/edit-salle/"+btoa(url) );
 
   onReserveSalle(s: any) {
     let url=s._links.self.href;
-    this.router.navigateByUrl("/reservations/"+btoa(url));
+    this.router.navigateByUrl("/nouvelle-reservation/"+btoa(url));
   }
 }

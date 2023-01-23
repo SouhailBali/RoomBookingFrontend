@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { EditSalleComponent } from './edit-salle/edit-salle.component';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { NouvelleReservationComponent } from './nouvelle-reservation/nouvelle-reservation.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReservationsComponent } from './reservations/reservations.component';
     SallesComponent,
     NouvelleSalleComponent,
     EditSalleComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    NouvelleReservationComponent
   ],
   imports: [
     BrowserModule,

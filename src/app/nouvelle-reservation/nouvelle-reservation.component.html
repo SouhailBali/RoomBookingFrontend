@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="col-md-7 "><div class="panel panel-default">
+
+    <div class="panel-heading" ><div style="margin-left: 25%">Veuilliez remplir les informations nécessaire</div></div>
+    <div class="panel-body">
+
+      <form #f="ngForm" (ngSubmit)="onSaveReservation(f.value)" *ngIf="currentSalle&&mode==1">
+        <div class="col-lg-5">
+          <div class="form-group">
+          <label class="control-label">Id Salle à réserver :</label>
+          <input  class="form-control"  type="text" name="salle_id" ngModel [readOnly]="true" [(ngModel)]="currentSalle.id">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Nom :</label>
+          <input class="form-control"  type="text" name="nom" ngModel  [readOnly]="true" [(ngModel)]="currentSalle.nom">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Désignation :</label>
+          <input  class="form-control"  type="text" name="designation" ngModel [readOnly]="true" [(ngModel)]="currentSalle.designation">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Capacité :</label>
+          <input class="form-control"  type="text" name="capacite" ngModel [readOnly]="true" [(ngModel)]="currentSalle.capacite">
+        </div>
+</div>
+        <div class="col-lg-5" style="float: end">
+          <div class="form-group">
+            <label class="control-label">Debut de la reservation :</label>
+            <input class="form-control" type="datetime-local" name="beginRes" ngModel>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Fin de la reservation :</label>
+            <input class="form-control" type="datetime-local" name="endRes" ngModel>
+          </div>
+        </div>
+
+        <button style="float: right" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>
+          Ajouter</button>
+      </form>
+
+    </div>
+    <div *ngIf="mode==2">
+
+
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Salle Réservé avec succée!</h4><hr>
+        <button style="float: right" (click)="router.navigateByUrl('/reservations')" class="btn btn-success" type="button"><span class="glyphicon glyphicon-arrow-right"></span>Go to Menu</button>
+
+        <button (click)="mode=1" class="btn btn-primary" type="button"><span class="glyphicon glyphicon-plus"></span>Réserver une salle</button>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+

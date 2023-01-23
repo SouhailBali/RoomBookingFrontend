@@ -28,30 +28,14 @@ export class ReservationsComponent implements OnInit{
     this.onGetReservations();
   }
   onGetReservations(){
-   /* this.ReservationsServices.getsReservation().subscribe(
+    this.ReservationsServices.getsReservation(this.currentPage,this.size).subscribe(
       data=>{
         // @ts-ignore
-        this.totalPages=data["page"].totalPages;
+        this.totalPages=data["totalPages"];
         if (this.totalPages != null) {
           this.pages = new Array<number>(this.totalPages)
-      }
-        this.reservation=data;
-        console.log(data);
-      },err=>{
-        console.log(err);
-      }
-    )*/
-    this.ReservationsServices.getsReservation().subscribe(
-      data=>{
-        // @ts-ignore
-        this.totalPage=(data["length"]/5).toFixed();
-        if (this.totalPage != null) {
-          this.page = new Array<bigint>(this.totalPage)
         }
         this.reservation=data;
-// @ts-ignore
-        console.log(this.page);
-        console.log(data);
       },err=>{
         console.log(err);
       }
@@ -66,13 +50,14 @@ export class ReservationsComponent implements OnInit{
 
     this.ReservationsServices.getReservationsById(this.currentId,this.currentPage,this.size).subscribe(
       data=>{
-
+console.log(data);
         // @ts-ignore
-        this.totalPages=data["page"].totalPages;
+        this.totalPages=data["totalPages"];
+        console.log(this.totalPages);
         if (this.totalPages != null) {
           this.pages = new Array<number>(this.totalPages)
         }
-        this.reservations=data;
+        this.reservation=data;
       },err=>{
         console.log(err);
       }
