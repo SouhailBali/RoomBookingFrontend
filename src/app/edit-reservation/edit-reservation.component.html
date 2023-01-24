@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Modification du produit</div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onUpdateReservation(f.value)" *ngIf="currentReservation&&mode==2">
+        <div class="form-group">
+          <label class="control-label">Début de la réservation :</label>
+          <input class="form-control" type="datetime-local" name="beginRes" ngModel [(ngModel)]="currentReservation.beginRes">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Fin de la réservation :</label>
+          <input class="form-control" type="datetime-local" name="endRes" ngModel [(ngModel)]="currentReservation.endRes">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Salle réservée :</label>
+          <input class="form-control" type="number" name="salle_id" ngModel [(ngModel)]="currentReservation.salle.id">
+        </div>
+
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>
+          Modifier</button>
+      </form>
+      <div *ngIf="mode==1">
+
+
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Salle modifiée avec succée!</h4>
+          <hr>
+          <button (click)="router.navigateByUrl('/salles')" class="btn btn-success" type="button"><span class="glyphicon glyphicon-arrow-right"></span>Go to Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

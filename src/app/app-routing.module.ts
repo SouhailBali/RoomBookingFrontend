@@ -5,6 +5,7 @@ import {NouvelleSalleComponent} from "./nouvelle-salle/nouvelle-salle.component"
 import {EditSalleComponent} from "./edit-salle/edit-salle.component";
 import {ReservationsComponent} from "./reservations/reservations.component";
 import {NouvelleReservationComponent} from "./nouvelle-reservation/nouvelle-reservation.component";
+import {EditReservationComponent} from "./edit-reservation/edit-reservation.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
   },{
     path: "edit-salle/:id",
     component:EditSalleComponent
+  },{
+    path: "edit-reservation/:id",
+    component:EditReservationComponent
   },{
     path: "",redirectTo:"/salles",pathMatch:'full'
   },{

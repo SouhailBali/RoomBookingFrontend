@@ -10,6 +10,7 @@ import {FormsModule} from "@angular/forms";
 import { EditSalleComponent } from './edit-salle/edit-salle.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { NouvelleReservationComponent } from './nouvelle-reservation/nouvelle-reservation.component';
+import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NouvelleReservationComponent } from './nouvelle-reservation/nouvelle-re
     NouvelleSalleComponent,
     EditSalleComponent,
     ReservationsComponent,
-    NouvelleReservationComponent
+    NouvelleReservationComponent,
+    EditReservationComponent
   ],
   imports: [
     BrowserModule,

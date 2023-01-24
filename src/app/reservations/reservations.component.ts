@@ -63,12 +63,13 @@ console.log(data);
       }
     );
   }
-  onDeleteReservation(s:any) {
+  onDeleteReservation(r:any) {
+    console.log(r.id);
     let con=confirm("êtes vous sûr?");
     if (con){
-      this.ReservationsServices.deleteReservation(s._links.self.href)
+      this.ReservationsServices.deleteReservation("http://localhost:8080/reservationlist/"+r.id)
         .subscribe(data=>{
-          this.chercherReservations();
+          this.onGetReservations();
         },err => {
           console.log(err);
         })
@@ -76,8 +77,7 @@ console.log(data);
 
   }
   onEditReservation(r: any) {
-    let url=r._links.self.href;
-    this.router.navigateByUrl("/edit-reservation/"+btoa(url) );
+    this.router.navigateByUrl("/edit-reservation/"+r.id );
   }
   onChercher(form: any) {
     this.currentPage=0;
