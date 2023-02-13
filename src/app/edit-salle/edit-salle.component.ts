@@ -12,7 +12,8 @@ export class EditSalleComponent implements OnInit{
   public currentSalle: Salle | undefined;
   private url: string | undefined;
   public mode: number=2;
-constructor(public router:Router,private activatedRoute:ActivatedRoute,private RoomsService:RoomBookingService) {
+  private selectedFiles:any;
+constructor(public router:Router,private activatedRoute:ActivatedRoute,public RoomsService:RoomBookingService) {
 }
 
   ngOnInit(): void {
@@ -30,5 +31,11 @@ this.mode=1;
     },err => {
 console.log(err);
     })
+  }
+
+  onSelectedFile($event: Event) {
+
+    // @ts-ignore
+    this.selectedFiles=event.target.files; console.log(event.target.files);
   }
 }

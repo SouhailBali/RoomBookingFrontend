@@ -11,7 +11,7 @@ import * as url from "url";
 })
 export class SallesComponent implements OnInit{
   private currentKeyword: string="";
-  constructor(private RoomsService:RoomBookingService,private router:Router) {
+  constructor(public RoomsService:RoomBookingService,private router:Router) {
   }
   public salles:any;
   public size:number=5;

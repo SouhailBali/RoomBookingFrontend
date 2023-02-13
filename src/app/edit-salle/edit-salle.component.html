@@ -15,6 +15,11 @@
           <label class="control-label">Capacité :</label>
           <input class="form-control" type="number" name="capacite" ngModel [(ngModel)]="currentSalle.capacite">
         </div>
+        <div class="form-group">
+          <label class="control-label">Photo :</label>
+          <div><img height="100px" src="{{this.RoomsService.host+'/photoSalle/'+currentSalle.id}}"/></div>
+          <input class="form-control" type="file" name="photoName" (change)="onSelectedFile($event)">
+        </div>
 
         <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>
           Modifier</button>

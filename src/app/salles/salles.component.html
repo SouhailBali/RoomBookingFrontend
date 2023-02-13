@@ -13,12 +13,15 @@
       <table *ngIf="salles" class="table table-striped">
         <tr>
           <th>ID</th>
+          <th>Photo</th>
           <th>Nom</th>
           <th>Designation</th>
           <th>Capacité</th>
+
         </tr>
         <tr *ngFor="let s of salles._embedded.salles">
           <td>{{s.id}}</td>
+          <td><img height="75px" src="{{this.RoomsService.host+'/photoSalle/'+s.id}}"/></td>
           <td>{{s.nom}}</td>
           <td>{{s.designation}}</td>
           <td>{{s.capacite}}</td>

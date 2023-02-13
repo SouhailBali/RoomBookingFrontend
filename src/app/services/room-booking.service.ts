@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Salle} from "../model/salle.model";
 import {Reservation} from "../model/reservation.model";
@@ -9,6 +9,8 @@ import {Reservation} from "../model/reservation.model";
 })
 export class RoomBookingService {
 public host:string="http://localhost:8080"
+  private http: any;
+public req:undefined;
   constructor(private httpClient:HttpClient) { }
   public getSalles(page:number,size:number){
     return this.httpClient.get(this.host+"/salles?page="+page+"&size="+size);
@@ -35,6 +37,17 @@ public deleteReservation(url:any){
     // @ts-ignore
     return this.httpClient.post<Salle>(url,data);
   }
+  // @ts-ignore
+ /* uploadPhotoSalle(file:File,des):Observable<HttpEvent<{}>>{
+let formData:FormData=new FormData();
+formData.append('file',file);
+// @ts-ignore
+    const req=new HttpRequest('POST',this.host+'/uploadPhoto/'+des,formData,{
+      reportProgress:true,
+      responseType:"text",
+    });
+    return this.http.request(req);
+  }*/
   public saveReservation(url:any,data:any):Observable<Reservation>{
     // @ts-ignore
     return this.httpClient.post<any>(url,data);
