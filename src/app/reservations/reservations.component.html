@@ -1,11 +1,14 @@
+<div class="content">
+
 <div class="container">
-  <div class="panel panel-primary">
-    <div class="panel-heading">Liste des reservations:</div>
+  <h2 class="mb-5">Liste des reservations:</h2>
+  <div id="tab">
+
     <div class="panel-body">
       <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
         <div class="form-group">
           <label>ID :</label><input type="number" name="keyword" ngModel placeholder="par ID">
-          <button style="margin-left: 15px" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span>
+          <button style="margin-left: 15px" class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search"></span>
             Chercher
           </button>
           <button style="margin-left: 25px" class="btn btn-toolbar" type="button" (click)="onGetReservations()"><span class="glyphicon glyphicon-arrow-down"></span>
@@ -13,27 +16,36 @@
           </button>
         </div>
       </form>
-      <table *ngIf="reservation" class="table table-striped">
+      <div class="content">
+
+      <div class="table-responsive">
+      <table *ngIf="reservation" class="table table-striped custom-table">
+        <thead>
         <tr>
-          <th>ID</th>
-          <th>date de debut</th>
-          <th>date de fin</th>
-          <th>Id Salle réservée</th>
-        </tr>
-        <tr *ngFor="let r of reservation.content">
+          <th scope="col">ID</th>
+          <th scope="col">date de debut</th>
+          <th scope="col">date de fin</th>
+          <th scope="col">Id Salle réservée</th>
+          <th scope="col">Matériel réservée</th>
+        </tr></thead><tbody>
+        <tr scope="row" *ngFor="let r of reservation.content">
           <td>{{r.id}}</td>
           <td>{{r.beginRes}}</td>
           <td>{{r.endRes}}</td>
           <td>{{r.salle.id}}</td>
-          <td><a class="btn btn-danger" (click)="onDeleteReservation(r)"><span class="glyphicon glyphicon-remove"></span> Supprimer</a></td>
-          <td><a class="btn btn-success" (click)="onEditReservation(r)"><span class="glyphicon glyphicon-edit"></span> Modiffier</a></td>
-        </tr>
+          <td>{{r.materiel.nom}}</td>
+          <td *ngIf="authenticationservice.isAdmin()"><a class="button-34" (click)="onDeleteReservation(r)"><span class="glyphicon glyphicon-trash"></span> Supprimer</a></td>
+          <td *ngIf="authenticationservice.isAdmin()"><a class="button-33" (click)="onEditReservation(r)"><span class="glyphicon glyphicon-edit"></span> Modiffier</a></td>
+        </tr></tbody>
       </table>
-      <ul  *ngIf="pages" class="nav nav-pills">
-        <li class="clickable" [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages;let i=index">
+      <ul  *ngIf="pages" class="nav nav-tabs nav-pills-primary justify-content-start  nav-pills-just-icons">
+        <li class="clickable "  [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages;let i=index">
           <a (click)="onPageReservation(i)">{{i}}</a>
         </li>
       </ul>
     </div>
   </div>
+      </div></div>
+  </div>
 </div>
+

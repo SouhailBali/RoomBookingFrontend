@@ -11,6 +11,10 @@ import { EditSalleComponent } from './edit-salle/edit-salle.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { NouvelleReservationComponent } from './nouvelle-reservation/nouvelle-reservation.component';
 import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
+import { NouveauMaterielComponent } from './nouveau-materiel/nouveau-materiel.component';
+import { MaterielsComponent } from './materiels/materiels.component';
+import { EditMaterielComponent } from './edit-materiel/edit-materiel.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { EditReservationComponent } from './edit-reservation/edit-reservation.co
     EditSalleComponent,
     ReservationsComponent,
     NouvelleReservationComponent,
-    EditReservationComponent
+    EditReservationComponent,
+    NouveauMaterielComponent,
+    MaterielsComponent,
+    EditMaterielComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

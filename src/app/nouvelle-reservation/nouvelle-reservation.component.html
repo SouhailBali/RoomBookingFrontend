@@ -1,7 +1,7 @@
-<div class="container">
-  <div class="col-md-7 "><div class="panel panel-default">
+<div class="container" style="margin-top: 3% ; width: 65%">
+  <div class=""><div class="panel panel-default">
 
-    <div class="panel-heading" ><div style="margin-left: 25%">Veuilliez remplir les informations nécessaire</div></div>
+    <div class="panel-heading" ><div style="margin-left: 28%" class="text-uppercase">Veuilliez remplir les informations nécessaires</div></div>
     <div class="panel-body">
 
       <form #f="ngForm" (ngSubmit)="onSaveReservation(f.value)" *ngIf="currentSalle&&mode==1">
@@ -32,10 +32,18 @@
             <label class="control-label">Fin de la reservation :</label>
             <input class="form-control" type="datetime-local" name="endRes" ngModel>
           </div>
-        </div>
+          <div class="form-group">
+            <label class="control-label">Matériels :</label>
+            <select class="form-control" id="select-menu" name="materiel_id"  ngModel>
+              <option value='0'></option>
+              <option  name="materiel_id" *ngFor="let m of materiels._embedded.materiels" [value]="m.id" >{{m.nom}}</option>
+            </select>
+          </div>
+
 
         <button style="float: right" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>
           Ajouter</button>
+        </div>
       </form>
 
     </div>

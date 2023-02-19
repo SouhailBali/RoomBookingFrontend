@@ -1,0 +1,9 @@
+#sect1 {
+  height: 650px;
+  color: #fff;
+  background: url('https://img.freepik.com/psd-premium/maquette-mur-salle-reunion-moderne_197944-2707.jpg?w=900') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

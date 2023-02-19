@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RoomBookingService} from "../services/room-booking.service";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
   selector: 'app-reservations',
@@ -11,7 +12,7 @@ export class ReservationsComponent implements OnInit{
   // @ts-ignore
   private currentId: number;
   private id: string="";
-  constructor(private ReservationsServices:RoomBookingService,private router:Router) {
+  constructor(private ReservationsServices:RoomBookingService,private router:Router,public authenticationservice:AuthenticationService) {
 
   }
 

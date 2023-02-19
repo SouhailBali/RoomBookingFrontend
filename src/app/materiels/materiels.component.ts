@@ -4,25 +4,23 @@ import {Router} from "@angular/router";
 import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
-  selector: 'app-salles',
-  templateUrl: './salles.component.html',
-  styleUrls: ['./salles.component.css']
+  selector: 'app-materiels',
+  templateUrl: './materiels.component.html',
+  styleUrls: ['./materiels.component.css']
 })
-export class SallesComponent implements OnInit{
+export class MaterielsComponent implements OnInit{
   private currentKeyword: string="";
-  constructor(public RoomsService:RoomBookingService,private router:Router,public authenticationservice:AuthenticationService) {
+  constructor(public RoomsService:RoomBookingService,private router:Router,public authservice:AuthenticationService) {
   }
-  public salles:any;
+  public materiels:any;
   public size:number=5;
   public currentPage:number=0;
   public totalPages: number | undefined;
   public pages: Array<number> | undefined;
   ngOnInit(): void {
-
   }
-
-  onGetSalles() {
-    this.RoomsService.getSalles(this.currentPage,this.size).subscribe(
+  onGetMateriels() {
+    this.RoomsService.getMateriels(this.currentPage,this.size).subscribe(
       data=>{
 
         // @ts-ignore
@@ -30,26 +28,24 @@ export class SallesComponent implements OnInit{
         if (this.totalPages != null) {
           this.pages = new Array<number>(this.totalPages)
         }
-        this.salles=data;
+        this.materiels=data;
       },err=>{
         console.log(err);
       }
     );
   }
-
-  onPageSalle(i: number) {
+  onPageMateriel(i: number) {
     this.currentPage=i;
-    this.chercherSalles();
+    this.chercherMateriels();
 
   }
-onChercher(form:any){
-this.currentPage=0;
-  this.currentKeyword=form.keyword;
-  this.chercherSalles();
-}
-  chercherSalles() {
-
-    this.RoomsService.getSallesByDesignation(this.currentKeyword,this.currentPage,this.size).subscribe(
+  onChercher(form:any){
+    this.currentPage=0;
+    this.currentKeyword=form.keyword;
+    this.chercherMateriels();
+  }
+  chercherMateriels() {
+    this.RoomsService.getMaterielsByDesignation(this.currentKeyword,this.currentPage,this.size).subscribe(
       data=>{
 
         // @ts-ignore
@@ -57,33 +53,26 @@ this.currentPage=0;
         if (this.totalPages != null) {
           this.pages = new Array<number>(this.totalPages)
         }
-        this.salles=data;
+        this.materiels=data;
       },err=>{
         console.log(err);
       }
     );
   }
-
-  onDeleteSalle(s:any) {
+  onDeleteMateriel(m:any) {
     let con=confirm("êtes vous sûr?");
     if (con){
-      this.RoomsService.deleteSalle(s._links.self.href)
+      this.RoomsService.deleteMateriel(m._links.self.href)
         .subscribe(data=>{
-this.chercherSalles();
+          this.chercherMateriels();
         },err => {
-console.log(err);
+          console.log(err);
         })
     }
 
   }
-
-  onEditSalle(s: any) {
-   let url=s._links.self.href;
-this.router.navigateByUrl("/edit-salle/"+btoa(url) );
-  }
-
-  onReserveSalle(s: any) {
-    let url=s._links.self.href;
-    this.router.navigateByUrl("/nouvelle-reservation/"+btoa(url));
+  onEditMateriel(m: any) {
+    let url=m._links.self.href;
+    this.router.navigateByUrl("/edit-materiel/"+btoa(url) );
   }
 }

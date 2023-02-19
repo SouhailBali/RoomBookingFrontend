@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Modification du produit</div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onUpdateMateriel(f.value)" *ngIf="currentMateriel&&mode==2">
+        <div class="form-group">
+          <label class="control-label">Nom :</label>
+          <input class="form-control" type="text" name="nom" ngModel [(ngModel)]="currentMateriel.nom">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Référence :</label>
+          <input class="form-control" type="text" name="reference" ngModel [(ngModel)]="currentMateriel.reference">
+        </div>
+
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>
+          Modifier</button>
+      </form>
+      <div *ngIf="mode==1">
+
+
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Matériel modifié avec succée!</h4>
+          <hr>
+          <button (click)="router.navigateByUrl('/materiels')" class="btn btn-success" type="button"><span class="glyphicon glyphicon-arrow-right"></span>Go to Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

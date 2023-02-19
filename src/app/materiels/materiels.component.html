@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Liste des salles:</div>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+        <div class="form-group">
+          <label>Keyword :</label><input type="text" name="keyword" ngModel placeholder="par Nom">
+          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span>
+            Chercher
+          </button>
+        </div>
+      </form>
+      <table *ngIf="materiels" class="table table-striped">
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Référence</th>
+
+        </tr>
+        <tr *ngFor="let m of materiels._embedded.materiels">
+          <td>{{m.id}}</td>
+          <td>{{m.nom}}</td>
+          <td>{{m.reference}}</td>
+          <td *ngIf="authservice.isAdmin()"><a class="btn btn-danger" (click)="onDeleteMateriel(m)"><span class="glyphicon glyphicon-remove"></span> Supprimer</a></td>
+          <td *ngIf="authservice.isAdmin()"><a class="btn btn-success" (click)="onEditMateriel(m)"><span class="glyphicon glyphicon-edit"></span> Modiffier</a></td>
+          </tr>
+      </table>
+      <ul  *ngIf="pages" class="nav nav-pills">
+        <li class="clickable" [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages;let i=index">
+          <a (click)="onPageMateriel(i)">{{i}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

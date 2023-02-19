@@ -1,21 +1,30 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="margin: 0px">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Room Booking</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a routerLink="/">Home</a></li>
-      <li class="dropdown">
+     <li *ngIf="authservice.isVisiteur" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Salles
           <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a routerLink="/salles">Chercher</a></li>
-          <li><a routerLink="/nouvelle-salle">Ajouter</a></li>
+          <li *ngIf="authservice.isAdmin()"><a routerLink="/nouvelle-salle">Ajouter</a></li>
         </ul>
       </li>
-      <li><a routerLink="/reservations">Reservations</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li *ngIf="authservice.isVisiteur"><a routerLink="/reservations">Reservations</a></li>
+      <li *ngIf="authservice.isVisiteur" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Materiels
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/materiels">Chercher</a></li>
+          <li *ngIf="authservice.isAdmin()"><a routerLink="/nouveau-materiel">Ajouter</a></li>
+        </ul>
+      </li>
+
     </ul>
+    <a *ngIf="authservice.isAuthenticated==true" (click)="onLogOut()" style="float: right;margin-top: 14px; color: cadetblue;cursor: pointer" ><span style="margin-right: 5px"  class="glyphicon glyphicon-log-out"></span>{{authservice.userAuthenticated.username}}</a>
   </div>
 </nav>
 <router-outlet>
